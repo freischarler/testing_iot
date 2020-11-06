@@ -17,7 +17,19 @@ module.exports=class Lista {
         return NaN;
     }
 
+    find_clave(clave){
+        if(this.#elementos.length===1){
+            return this.#elementos[0].clave;
+        }
+        return NaN;
+    }
+
     add(clave, valor) {
-        this.#elementos.push({clave,valor});
+        if(this.find_clave(clave)===clave){
+            return NaN;
+        }
+        else{
+            this.#elementos.push({clave,valor});
+        }    
     }
 };
