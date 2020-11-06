@@ -8,11 +8,11 @@
  * Cuando se agrega un elemento al principio la lista de claves esta ordenada.
  * Cuando se agrega un elemento al final la lista de claves esta ordenada.
  * 
- * Almacena pares clave:valor.
- * Las claves deben ser únicas.
- * Las claves son cadenas de texto.
- * Se debe poder recuperar un valor a partir de una clave.
- * Se debe poder actualizar el valor asociado a una clave.
+ * ***Almacena pares clave:valor.
+ * ***Las claves deben ser únicas.
+ * ***Las claves son cadenas de texto.
+ * ***Se debe poder recuperar un valor a partir de una clave.
+ * ***Se debe poder actualizar el valor asociado a una clave.
  * Se debe poder recuperar la cantidad de elementos almacenados en la lista.
  * Se debe poder recuperar una lista ordenada con las claves almacenadas en la lista.
  * Se puede borrar una pareja a partir de la clave.
@@ -54,5 +54,29 @@ describe("cuado se agrega un elemento a una lista con elementos" , function() {
 
     it("las claves deben ser unicas", function() {
         assert.isNaN(lista.add("clave", "valor"));
+    })
+})
+
+describe("Las claves son cadenas de texto" , function() {
+    var lista = new Lista();
+    lista.add("clave", "valor");
+
+    it("no se puede agregar un numero", function() {
+        assert.isNaN(lista.add("22", "valor"));
+    })
+
+    it("se agrega un texto", function() {
+        assert.isNotNaN(lista.add("AA", "valor"));
+    })
+})
+
+
+describe("Se debe poder actualizar a partir de una clave" , function() {
+    var lista = new Lista();
+    lista.add("clave", "valor1");
+    lista.add("clave_test", "valor2");
+
+    it("actualizo clave", function() {
+        assert.equal(lista.update("clave_test","valor3"),1);
     })
 })

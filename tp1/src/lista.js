@@ -29,7 +29,17 @@ module.exports=class Lista {
             return NaN;
         }
         else{
-            this.#elementos.push({clave,valor});
+            if(isNaN(clave)){
+                this.#elementos.push({clave,valor});
+            }
+            else{
+                return NaN;
+            }
         }    
+    }
+
+    update(clave,valor) {
+        resultado = this.#elementos.find( this.#elementos.clave === clave );
+        console.log(resultado); 
     }
 };
