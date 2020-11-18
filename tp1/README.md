@@ -1,0 +1,3 @@
+to init:
+
+npm test

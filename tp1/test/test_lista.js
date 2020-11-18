@@ -13,8 +13,8 @@
  * ***Las claves son cadenas de texto.
  * ***Se debe poder recuperar un valor a partir de una clave.
  * ***Se debe poder actualizar el valor asociado a una clave.
- * Se debe poder recuperar la cantidad de elementos almacenados en la lista.
- * Se debe poder recuperar una lista ordenada con las claves almacenadas en la lista.
+ * ***Se debe poder recuperar la cantidad de elementos almacenados en la lista.
+ * ***Se debe poder recuperar una lista ordenada con las claves almacenadas en la lista.
  * Se puede borrar una pareja a partir de la clave.
  *
  */
@@ -46,15 +46,41 @@ describe("cuado se agrega un elemento a una lista vacía" , function() {
         assert.equal(lista.find("clave"), "valor");
     })
 
+    it("al borrar el unico elemento obtengo true", () => {
+        let clave = 'clave';
+        assert.equal(lista.delete(clave), true);
+    });
+
 })
 
 describe("cuado se agrega un elemento a una lista con elementos" , function() {
     var lista = new Lista();
-    lista.add("clave", "valor");
+
+    lista.add("C", "valor");
+    lista.add("B", "valor");
+    lista.add("Z", "valor");
+    lista.add("bad", "bad");
+    lista.delete('bad');        //agrego y elimino un valor, no deberia afectar el test
+
+    it("orden elementos", function() {
+        let ordenada = ['B', 'C', 'Z'];
+        assert.deepEqual(lista.get_ordenar(), ordenada);
+    })
 
     it("las claves deben ser unicas", function() {
-        assert.isNaN(lista.add("clave", "valor"));
+        assert.isNumber(lista.add("clave", "valor"),1);
     })
+
+    it("las claves deben ser unicas", function() {
+        assert.isNaN(lista.add("C", "valor"));
+    })
+
+    it("cantidad de elementos", function() {
+        assert.equal(lista.count(), 4);
+    })
+
+    
+    
 })
 
 describe("Las claves son cadenas de texto" , function() {
