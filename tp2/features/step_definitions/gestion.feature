@@ -22,3 +22,9 @@ Escenario: Eliminar un elemento de una lista con elementos
     Cuando se elimina la clave "dos"
     Entonces la lista tiene 2 elementos almacenados
 
+Escenario: Modificar un valor asociedo a una clave
+    Dado una lista con los siguientes elementos
+    | "uno"  | 1 |
+    | "dos"  | 2 |
+    Cuando se cambia el valor de { "dos" } por 3
+    Entonces al leer "dos", deberia retornar 3

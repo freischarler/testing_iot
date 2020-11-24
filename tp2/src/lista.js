@@ -30,11 +30,66 @@ module.exports = class Lista {
         }
     }
 
-    find(key) {
-        var indice = this.indexOf(key);
-        if (!isNaN(indice)) {
-            return this.#elementos[indice].valor;
+    find(clave) {
+        if(this.#elementos.length>0){
+            for (var i=0; i < this.#elementos.length; i++) {
+                if (this.#elementos[i].clave === clave) { 
+                    return true;
+                }
+            }
         }
-        return NaN;
+        else{
+            return false;
+        } 
     }
+
+    get_value(clave) {
+        //console.log('valor que llega a get_value: '+clave)
+        //console.log(this.#elementos)
+        clave=eval(clave.toString())
+        if(this.#elementos.length>0){
+            for (var i=0; i < this.#elementos.length; i++) {
+                if (this.#elementos[i].clave === clave) { 
+                    //console.log(this.#elementos[i].valor);
+                    return this.#elementos[i].valor;
+                }
+            }
+            return false;
+        }
+        else{
+            return false;
+        } 
+    }
+
+    update(clave,valor) {
+        
+        //console.log(this.#elementos)
+        //console.log(this.get_value_by_id(clave));
+        //console.log(valor);
+        if(!isNaN(this.get_value_by_id(clave))){
+            this.#elementos[this.get_value_by_id(clave)].valor=valor;
+            return true;
+        }
+        else{
+            return false;
+        }
+        
+        //let resultado = this.#elementos.find(o => o.clave === clave);        
+    }
+
+    get_value_by_id(clave){
+        
+        if(this.#elementos.length>0){
+            for (var i=0; i < this.#elementos.length; i++) {
+                //console.log(this.#elementos[i].clave);
+                if (this.#elementos[i].clave === eval(clave)) {
+                    return i;
+                }
+            }
+        }
+        else{
+            return false;
+        }
+    }
+
 }
