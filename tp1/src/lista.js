@@ -19,7 +19,7 @@ module.exports=class Lista {
             }
         }
         else{
-            return NaN;
+            return false;
         }    
     }
 
@@ -33,7 +33,7 @@ module.exports=class Lista {
             }
         }
         else{
-            return NaN;
+            return false;
         }    
     }
 
@@ -42,15 +42,15 @@ module.exports=class Lista {
         if(this.find_clave(clave)=== true){
             //console.log('BANDERA'+this.find_clave(clave)===clave)
             //console.log('BANDERA');
-            return NaN;
+            return false;
         }
         else{
             if(isNaN(clave)){
                 this.#elementos.push({clave,valor});
-                return 1;
+                return true;
             }
             else{
-                return NaN;
+                return false;
             }
         }    
     }
@@ -64,7 +64,7 @@ module.exports=class Lista {
             }
         }
         else{
-            return NaN;
+            return false;
         }
         
     }
@@ -72,7 +72,7 @@ module.exports=class Lista {
     get_ordenar() {
         let claves = [];
         if (this.#elementos.length===0) {
-            return NaN;
+            return false;
         } else {
             for (let i = 0; i < this.#elementos.length; i++) {
                 claves.push(this.#elementos[i].clave);
@@ -88,7 +88,7 @@ module.exports=class Lista {
                 return true;
             }
         }
-        return NaN;
+        return false;
     }
 
     update(clave,valor) {
@@ -97,10 +97,10 @@ module.exports=class Lista {
         if(!isNaN(this.get_id(clave))){
             this.#elementos[this.get_id(clave)].valor=valor;
             //console.log(this.#elementos);
-            return 1;
+            return true;
         }
         else{
-            return NaN;
+            return false;
         }
         
         //let resultado = this.#elementos.find(o => o.clave === clave);        

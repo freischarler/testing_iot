@@ -15,7 +15,7 @@
  * ***Se debe poder actualizar el valor asociado a una clave.
  * ***Se debe poder recuperar la cantidad de elementos almacenados en la lista.
  * ***Se debe poder recuperar una lista ordenada con las claves almacenadas en la lista.
- * Se puede borrar una pareja a partir de la clave.
+ * ***Se puede borrar una pareja a partir de la clave.
  *
  */
 
@@ -30,7 +30,7 @@ describe("en una lista vacia" , function() {
     })
 
     it("no se encuentra ninguna clave", function() {
-        assert.isNaN(lista.find("clave"));
+        assert.isFalse(lista.find("clave"));
     })
 })
 
@@ -68,11 +68,11 @@ describe("cuado se agrega un elemento a una lista con elementos" , function() {
     })
 
     it("las claves deben ser unicas", function() {
-        assert.isNumber(lista.add("clave", "valor"),1);
+        assert.isTrue(lista.add("clave", "valor"),true);
     })
 
     it("las claves deben ser unicas", function() {
-        assert.isNaN(lista.add("C", "valor"));
+        assert.isFalse(lista.add("C", "valor"));
     })
 
     it("cantidad de elementos", function() {
@@ -88,11 +88,11 @@ describe("Las claves son cadenas de texto" , function() {
     lista.add("clave", "valor");
 
     it("no se puede agregar un numero", function() {
-        assert.isNaN(lista.add("22", "valor"));
+        assert.isFalse(lista.add("22", "valor"));
     })
 
     it("se agrega un texto", function() {
-        assert.isNotNaN(lista.add("AA", "valor"));
+        assert.isTrue(lista.add("AA", "valor"));
     })
 })
 
