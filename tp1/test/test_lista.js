@@ -64,7 +64,7 @@ describe("cuado se agrega un elemento a una lista con elementos" , function() {
 
     it("orden elementos", function() {
         let ordenada = ['B', 'C', 'Z'];
-        assert.deepEqual(lista.get_ordenar(), ordenada);
+        assert.deepEqual(lista.get_order(), ordenada);
     })
 
     it("las claves deben ser unicas", function() {

@@ -55,7 +55,7 @@ module.exports=class Lista {
         }    
     }
 
-    get_id(clave){
+    get_value_by_id(clave){
         if(this.#elementos.length>0){
             for (var i=0; i < this.#elementos.length; i++) {
                 if (this.#elementos[i].clave === clave) {
@@ -69,7 +69,7 @@ module.exports=class Lista {
         
     }
 
-    get_ordenar() {
+    get_order() {
         let claves = [];
         if (this.#elementos.length===0) {
             return false;
@@ -94,9 +94,8 @@ module.exports=class Lista {
     update(clave,valor) {
         //console.log(this.#elementos);
 
-        if(!isNaN(this.get_id(clave))){
-            this.#elementos[this.get_id(clave)].valor=valor;
-            //console.log(this.#elementos);
+        if(!isNaN(this.get_value_by_id(clave))){
+            this.#elementos[this.get_value_by_id(clave)].valor=valor;
             return true;
         }
         else{
