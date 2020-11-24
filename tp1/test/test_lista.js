@@ -68,19 +68,18 @@ describe("cuado se agrega un elemento a una lista con elementos" , function() {
     })
 
     it("las claves deben ser unicas", function() {
-        assert.isTrue(lista.add("clave", "valor"),true);
+        /*
+        *   hay 3 elementos en total, agregamos uno que se repite, 
+        *   por lo tanto no deberia aumentar el vector
+        */ 
+       
+        lista.add("C", "valor");
+        assert.equal(lista.count(), 3);
     })
 
     it("las claves deben ser unicas", function() {
         assert.isFalse(lista.add("C", "valor"));
     })
-
-    it("cantidad de elementos", function() {
-        assert.equal(lista.count(), 4);
-    })
-
-    
-    
 })
 
 describe("Las claves son cadenas de texto" , function() {
