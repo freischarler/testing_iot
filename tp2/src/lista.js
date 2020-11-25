@@ -1,36 +1,30 @@
-module.exports = class Lista {    
+module.exports=class Lista {
+
     #elementos;
 
     constructor(){
-        this.#elementos=[]
-    }
-    
-    add(key, value) {
-        this.#elementos.push({'clave': key, 'valor': value});
+        this.#elementos=[];
     }
 
-    count (){
+    count(){
         return this.#elementos.length;
     }
 
-    indexOf(key) {
-        for (var indice = 0; indice < this.#elementos.length; indice++) {
-            if (this.#elementos[indice].clave == key) {
-                return indice;
+    find(clave){
+        if(this.#elementos.length>0){
+            for (var i=0; i < this.#elementos.length; i++) {
+                if (this.#elementos[i].clave === clave) {
+                    return this.#elementos[i].valor;
+                }
             }
         }
-        return NaN;
+        else{
+            return false;
+        }    
     }
 
-    delete(key) {
-        var indice = this.indexOf(key);
-        if (!isNaN(indice)) {
-            this.#elementos.splice(indice, 1);
-            return
-        }
-    }
-
-    find(clave) {
+    find_clave(clave){
+        //console.log(this.#elementos);
         if(this.#elementos.length>0){
             for (var i=0; i < this.#elementos.length; i++) {
                 if (this.#elementos[i].clave === clave) { 
@@ -40,32 +34,66 @@ module.exports = class Lista {
         }
         else{
             return false;
-        } 
+        }    
     }
 
-    get_value(clave) {
-        //console.log('valor que llega a get_value: '+clave)
-        //console.log(this.#elementos)
-        clave=eval(clave.toString())
-        if(this.#elementos.length>0){
-            for (var i=0; i < this.#elementos.length; i++) {
-                if (this.#elementos[i].clave === clave) { 
-                    //console.log(this.#elementos[i].valor);
-                    return this.#elementos[i].valor;
-                }
-            }
+    add(clave, valor) {
+        
+        if(this.find_clave(clave)=== true){
+            //console.log('BANDERA'+this.find_clave(clave)===clave)
+            //console.log('BANDERA');
             return false;
         }
         else{
+            if(isNaN(clave)){
+                this.#elementos.push({clave,valor});
+                return true;
+            }
+            else{
+                return false;
+            }
+        }    
+    }
+
+    get_value_by_id(clave){
+        if(this.#elementos.length>0){
+            for (var i=0; i < this.#elementos.length; i++) {
+                if (this.#elementos[i].clave === clave) {
+                    return i;
+                }
+            }
+        }
+        else{
             return false;
-        } 
+        }
+        
+    }
+
+    get_order() {
+        let claves = [];
+        if (this.#elementos.length===0) {
+            return false;
+        } else {
+            for (let i = 0; i < this.#elementos.length; i++) {
+                claves.push(this.#elementos[i].clave);
+            }
+            return claves.sort();
+        }
+    }
+
+    delete(clave) {
+        for (let i = 0; i < this.#elementos.length; i++) {
+            if (this.#elementos[i].clave == clave) {
+                this.#elementos.splice(i);
+                return true;
+            }
+        }
+        return false;
     }
 
     update(clave,valor) {
-        
-        //console.log(this.#elementos)
-        //console.log(this.get_value_by_id(clave));
-        //console.log(valor);
+        //console.log(this.#elementos);
+
         if(!isNaN(this.get_value_by_id(clave))){
             this.#elementos[this.get_value_by_id(clave)].valor=valor;
             return true;
@@ -76,20 +104,4 @@ module.exports = class Lista {
         
         //let resultado = this.#elementos.find(o => o.clave === clave);        
     }
-
-    get_value_by_id(clave){
-        
-        if(this.#elementos.length>0){
-            for (var i=0; i < this.#elementos.length; i++) {
-                //console.log(this.#elementos[i].clave);
-                if (this.#elementos[i].clave === eval(clave)) {
-                    return i;
-                }
-            }
-        }
-        else{
-            return false;
-        }
-    }
-
-}
+};

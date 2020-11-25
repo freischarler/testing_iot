@@ -1,20 +1,21 @@
 {
-  "name": "tp2",
+  "name": "tp1",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js --publish-quiet",
-    "coverage": "nyc --reporter=html cucumber-js --publish-quiet"
+    "test": "mocha --reporter spec",
+    "coverage": "nyc --reporter=html mocha"
   },
-  "author": "",
+  "author": "Martin Paz",
   "license": "ISC",
   "dependencies": {
-    "@cucumber/cucumber": "^7.0.0-rc.0",
     "chai": "^4.2.0",
+    "mocha": "^8.2.0",
     "nyc": "^15.1.0"
   },
-  "nyc": {
-    "exclude": "features/**" 
-  }  
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "description": ""
 }

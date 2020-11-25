@@ -18,6 +18,7 @@ Dado('una lista con los siguientes elementos', function (tabla) {
 });
 
 
+
 Cuando('se agrega la pareja {}', function  (pareja) {
     pareja=JSON.parse(pareja);
     contexto.lista.add(Object.keys(pareja)[0], Object.values(pareja)[0]);
@@ -42,6 +43,20 @@ Cuando('se cambia el valor de {} por {}', function (string,int) {
     
 
 });
+
+Entonces('se obtiene', function (tabla) {
+    // Write code here that turns the phrase above into concrete actions
+    let aux = [];
+
+    tabla.rawTable.forEach(pareja => {
+        aux.push(eval(pareja[0]));
+    });
+    aux.sort();
+    //console.log('Salida esperada: '+aux)
+    let lista_ordenada=contexto.lista.get_order();
+
+    expect(lista_ordenada.toString()).to.equal(aux.toString());
+  });
 
 Entonces(/^se obtiene el valor (false|[\"\d\w]+)$/, function (clave) {
     expect(contexto.lista.get_value(clave)).to.equal(false);
