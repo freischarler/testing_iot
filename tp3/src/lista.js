@@ -6,7 +6,11 @@ module.exports = class Lista {
     }
     
     add(key, value) {
-        this.#elementos.push({'clave': key, 'valor': value});
+        if(isNaN(key)){
+            this.#elementos.push({'clave': key, 'valor': value});
+            return true;
+        }
+        return false;
     }
 
     count (){
@@ -74,7 +78,7 @@ module.exports = class Lista {
             return false;
         }
         
-        //let resultado = this.#elementos.find(o => o.clave === clave);        
+        
     }
 
     get_value_by_id(clave){

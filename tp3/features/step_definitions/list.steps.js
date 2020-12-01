@@ -21,10 +21,12 @@ Dado('una lista con los siguientes elementos', function (tabla) {
 
 Cuando('se agrega la pareja {}', function  (pareja) {
     pareja=JSON.parse(pareja);
-    contexto.lista.add(Object.keys(pareja)[0], Object.values(pareja)[0]);
+    
+    if(!contexto.lista.find(Object.keys(pareja)[0])){
+        contexto.lista.add(Object.keys(pareja)[0], Object.values(pareja)[0]);
+    }
+    
 });
-
-
 
 Cuando('se elimina la clave {string}', function (clave) {
     // Write code here that turns the phrase above into concrete actions
@@ -40,8 +42,10 @@ Cuando('se cambia el valor de {} por {}', function (string,int) {
     // Write code here that turns the phrase above into concrete actions
     //console.log(int)
     contexto.lista.update(string,int);
-    
+});
 
+Cuando('se consulta la cantidad de elementos', function () {
+    c=contexto.lista.count();
 });
 
 Entonces('se obtiene', function (tabla) {
@@ -76,3 +80,4 @@ Entonces('la lista tiene {int} elemento almacenado', function (cantidad) {
 Entonces('la lista tiene {int} elementos almacenados', function (cantidad) {
     expect(contexto.lista.count()).to.equal(cantidad);
 });
+
