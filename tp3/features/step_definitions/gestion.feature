@@ -40,7 +40,7 @@ Escenario: Modificar un valor asociedo a una clave
     Cuando se cambia el valor de { "dos" } por 3
     Entonces al leer "dos", deberia retornar 3
 
-Escenario: Devolver la cantidad de elementos de una lista vacia
+Escenario: Devolver la cantidad de elementos de una lista con elementos
     Dado una lista con los siguientes elementos
     | "uno"  | 1 |
     | "dos"  | 2 |
@@ -48,7 +48,7 @@ Escenario: Devolver la cantidad de elementos de una lista vacia
     Cuando se consulta la cantidad de elementos
     Entonces la lista tiene 3 elementos almacenados
 
-Escenario: Devolver la cantidad de elementos de una lista con elementos
+Escenario: Devolver la cantidad de elementos de una lista vacia 
     Dado una lista vacía
     Cuando se consulta la cantidad de elementos
     Entonces la lista tiene 0 elementos almacenados
